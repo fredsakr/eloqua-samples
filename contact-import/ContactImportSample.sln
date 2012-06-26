@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactImportSample", "ContactImportSample\ContactImportSample.csproj", "{BF8B5F3C-1252-4B6C-9A18-57E81C237ECB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactImportSample.Tests", "ContactImportSample.Tests\ContactImportSample.Tests.csproj", "{6ABE118B-9079-459A-9122-F5A7A3FDE8E3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BF8B5F3C-1252-4B6C-9A18-57E81C237ECB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF8B5F3C-1252-4B6C-9A18-57E81C237ECB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF8B5F3C-1252-4B6C-9A18-57E81C237ECB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF8B5F3C-1252-4B6C-9A18-57E81C237ECB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6ABE118B-9079-459A-9122-F5A7A3FDE8E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ABE118B-9079-459A-9122-F5A7A3FDE8E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ABE118B-9079-459A-9122-F5A7A3FDE8E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ABE118B-9079-459A-9122-F5A7A3FDE8E3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
