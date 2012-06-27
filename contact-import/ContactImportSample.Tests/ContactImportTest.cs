@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using ContactImportSample.RequestObjects;
 using NUnit.Framework;
 
 namespace ContactImportSample.Tests
@@ -32,7 +33,11 @@ namespace ContactImportSample.Tests
         [Test]
         public void CreateImportTest()
         {
-            var fields = new Dictionary<string, string> {{"C_EmailAddress", "{{Contact.Field(C_EmailAddress)}}"}};
+            var fields = new Dictionary<string, string>
+                             {
+                                 {"C_EmailAddress", "{{Contact.Field(C_EmailAddress)}}"},
+                                 {"C_FirstName", "{{Contact.Field(C_FirstName)}}"},
+                             };
             var result = _contactImportHelper.CreateImport(fields);
             Assert.IsNotNullOrEmpty(result);
         }
@@ -40,10 +45,24 @@ namespace ContactImportSample.Tests
         [Test]
         public void DataImportTest()
         {
-            var data = new Dictionary<string, string>();
-            data.Add("C_EmailAddress", "test@test.com");
-            var result = _contactImportHelper.ImportData("/contact/import/" + 1, data);
-            var t = result;
+            var data = new Dictionary<string, string>
+                           {
+                               {"C_EmailAddress", "test@test.com"},
+                               {"C_FirstName", "Test"}
+                           };
+            var data2 = new Dictionary<string, string>
+                           {
+                               {"C_EmailAddress", "test2@test.com"},
+                               {"C_FirstName", "Test2"}
+                           };
+
+            var list = new List<Dictionary<string, string>>
+                           {
+                               data,
+                               data2
+                           };
+            Sync sync = _contactImportHelper.ImportData("/contact/import/" + 184, data);
+            Assert.IsNotNullOrEmpty(sync.uri);
         }
 
         [Test]

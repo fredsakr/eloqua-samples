@@ -31,7 +31,7 @@ namespace ContactImportSample
 
         #endregion
 
-        #region Step 1 : Configure the Import
+        #region Step 2 : Configure the Import
 
         /// <summary>
         /// The <see cref="Import"/> definition contains references to the fields being imported
@@ -44,11 +44,11 @@ namespace ContactImportSample
             Import import = new Import()
             {
                 name = "Fred's import",
+                fields = fields,
                 updateRule = RuleType.always,
                 identifierFieldName = "C_EmailAddress",
                 secondsToRetainData = 3600,
                 isSyncTriggeredOnImport = true,
-                fields = fields,
                 syncActions = new List<SyncAction>()
                                                    {
                                                        new SyncAction()
@@ -74,7 +74,7 @@ namespace ContactImportSample
 
         #endregion
 
-        #region Step 2 : Data Import
+        #region Step 3 : Data Import
 
         /// <summary>
         /// Responsible for pushing the data to the API
@@ -82,7 +82,7 @@ namespace ContactImportSample
         /// <param name="importUri"></param>
         /// <param name="data"></param>
         /// <returns>The URI of the Sync</returns>
-        public string ImportData(string importUri, Dictionary<string, string> data)
+        public Sync ImportData(string importUri, Dictionary<string, string> data)
         {
             RestRequest request = new RestRequest(Method.POST)
                                       {
@@ -94,12 +94,12 @@ namespace ContactImportSample
             IRestResponse<Sync> response = _client.Execute<Sync>(request);
             Sync sync = response.Data;
 
-            return sync.uri;
+            return sync;
         }
 
         #endregion
 
-        #region Step 3 : Check the SyncResult
+        #region Step 4 : Check the SyncResult
 
         /// <summary>
         /// Check the <see cref="Sync"/> result Status
@@ -120,7 +120,7 @@ namespace ContactImportSample
 
         #endregion
 
-        #region Data Helpers
+        #region Step 1 : Data Helpers
 
         /// <summary>
         /// Invoke a REST Request to retrieve a list of <see cref="Field"/> from the API
@@ -133,7 +133,7 @@ namespace ContactImportSample
         {
             RestRequest request = new RestRequest(Method.GET)
                               {
-                                  Resource = string.Format("/contact/fields?search={0}&pageSize={1}&page={2}", searchTerm, pageSize, page)
+                                  Resource = string.Format("/contact/fields?search={0}&page={1}&pageSize={2}", searchTerm, page, pageSize)
                               };
 
             IRestResponse<RequestObjectList<Field>> response = _client.Get<RequestObjectList<Field>>(request);
@@ -158,7 +158,10 @@ namespace ContactImportSample
         /// <returns></returns>
         public List<ContactList> GetContactLists(string searchTerm, int page, int pageSize)
         {
-            RestRequest request = new RestRequest(Method.GET) { Resource = "/contact/lists?search=*?pageSize=100&page=1" };
+            RestRequest request = new RestRequest(Method.GET)
+                                      {
+                                          Resource = string.Format("/contact/lists?search={0}&page={1}&pageSize={2}", searchTerm, page, pageSize)
+                                      };
 
             IRestResponse<RequestObjectList<ContactList>> response = _client.Get<RequestObjectList<ContactList>>(request);
             List<ContactList> contactLists = response.Data.elements;
