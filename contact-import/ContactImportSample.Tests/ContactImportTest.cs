@@ -19,21 +19,21 @@ namespace ContactImportSample.Tests
         [Test]
         public void GetContactFieldsTest()
         {
-            var fields = _contactImportHelper.GetFields("*", 1, 1);
+            List<Field> fields = _contactImportHelper.GetFields("*", 1, 1);
             Assert.AreEqual(1, fields.Count);
         }
 
         [Test]
         public void GetContactListsTest()
         {
-            var contactLists = _contactImportHelper.GetContactLists("*", 1, 1);
+            List<ContactList> contactLists = _contactImportHelper.GetContactLists("*", 1, 1);
             Assert.AreEqual(1, contactLists.Count);
         }
 
         [Test]
         public void CreateImportTest()
         {
-            var fields = new Dictionary<string, string>
+            Dictionary<string, string> fields = new Dictionary<string, string>
                              {
                                  {"C_EmailAddress", "{{Contact.Field(C_EmailAddress)}}"},
                                  {"C_FirstName", "{{Contact.Field(C_FirstName)}}"},
@@ -45,18 +45,18 @@ namespace ContactImportSample.Tests
         [Test]
         public void DataImportTest()
         {
-            var data = new Dictionary<string, string>
+            Dictionary<string, string> data = new Dictionary<string, string>
                            {
                                {"C_EmailAddress", "test@test.com"},
                                {"C_FirstName", "Test"}
                            };
-            var data2 = new Dictionary<string, string>
+            Dictionary<string, string> data2 = new Dictionary<string, string>
                            {
                                {"C_EmailAddress", "test2@test.com"},
                                {"C_FirstName", "Test2"}
                            };
 
-            var list = new List<Dictionary<string, string>>
+            List<Dictionary<string, string>> list = new List<Dictionary<string, string>>
                            {
                                data,
                                data2
