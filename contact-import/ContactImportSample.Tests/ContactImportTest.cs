@@ -68,8 +68,8 @@ namespace ContactImportSample.Tests
         [Test]
         public void GetSyncResult()
         {
-            var syncMessage = _contactImportHelper.CheckSyncResult("/sync/1");
-            Assert.Greater(0, syncMessage.elements.Count);
+            RequestObjectList<SyncResult> syncResult = _contactImportHelper.CheckSyncResult("/sync/1");
+            Assert.Greater(0, syncResult.elements.Count);
         }
     }
 }
