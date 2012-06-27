@@ -43,7 +43,7 @@ namespace ContactImportSample
         {
             Import import = new Import()
             {
-                name = "Fred's import",
+                name = "sample import",
                 fields = fields,
                 updateRule = RuleType.always,
                 identifierFieldName = "C_EmailAddress",
@@ -82,7 +82,7 @@ namespace ContactImportSample
         /// <param name="importUri"></param>
         /// <param name="data"></param>
         /// <returns>The URI of the Sync</returns>
-        public Sync ImportData(string importUri, Dictionary<string, string> data)
+        public Sync ImportData(string importUri, List<Dictionary<string, string>> data)
         {
             RestRequest request = new RestRequest(Method.POST)
                                       {

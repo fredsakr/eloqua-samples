@@ -61,7 +61,7 @@ namespace ContactImportSample.Tests
                                data,
                                data2
                            };
-            Sync sync = _contactImportHelper.ImportData("/contact/import/" + 184, data);
+            Sync sync = _contactImportHelper.ImportData("/contact/import/" + 1, list);
             Assert.IsNotNullOrEmpty(sync.uri);
         }
 
