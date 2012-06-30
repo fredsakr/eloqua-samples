@@ -42,9 +42,9 @@ namespace EmailSample.Tests
                 encodingId = 1,
                 emailGroupId = 1,
                 htmlContent = new RawHtmlContent()
-                {
-                    htmlBody = "email content"
-                }
+                                  {
+                                      html = "<html><body>test</body></html>"
+                                  }
             };
 
             Email returnedEmail = _emailHelper.CreateEmail(email);
@@ -56,6 +56,15 @@ namespace EmailSample.Tests
         {
             int emailId = 1;
             _emailHelper.DeleteEmail(emailId);
+        }
+
+        [Test]
+        public void SendEmailTest()
+        {
+            int contactId = 1;
+            Email email = _emailHelper.GetEmail(1);
+
+            _emailHelper.SendEmailToContact(contactId, email);
         }
     }
 }

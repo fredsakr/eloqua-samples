@@ -127,5 +127,53 @@ namespace EmailSample
 
         #endregion
 
+        #region send email to a contact
+        
+        /// <summary>
+        /// Sending an Email is also known as an Email Deployment
+        /// </summary>
+        /// <param name="contactId"></param>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        public Deployment SendEmailToContact(int contactId, Email email)
+        {
+            Deployment deployment = new Deployment
+                                        {
+                                            contactId = contactId,
+                                            email = email,
+                                            name = "sample deployment",
+                                            type = "EmailTestDeployment"
+                                        };
+
+            RestRequest request = new RestRequest(Method.POST)
+                                      {
+                                          Resource = "/assets/email/deployment",
+                                          RequestFormat = DataFormat.Json
+                                      };
+            request.AddBody(deployment);
+
+            IRestResponse<Deployment> response = _client.Execute<Deployment>(request);
+
+            return response.Data;
+        }
+
+        /// <summary>
+        /// Retrieve a Deployment
+        /// </summary>
+        /// <param name="deploymentId"></param>
+        /// <returns></returns>
+        public Deployment GetDeployment(int deploymentId)
+        {
+            RestRequest request = new RestRequest(Method.GET)
+                                      {
+                                          RequestFormat = DataFormat.Json,
+                                          Resource = "/assets/email/deployment/" + deploymentId
+                                      };
+
+            IRestResponse<Deployment> response = _client.Execute<Deployment>(request);
+            return response.Data;
+        }
+
+        #endregion
     }
 }

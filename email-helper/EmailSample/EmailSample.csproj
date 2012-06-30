@@ -46,8 +46,9 @@
     <Compile Include="EmailHelper.cs" />
     <Compile Include="Models\Content\HtmlContent.cs" />
     <Compile Include="Models\Content\RawHtmlContent.cs" />
+    <Compile Include="Models\Deployment.cs" />
     <Compile Include="Models\Email.cs" />
-    <Compile Include="Models\RequetObjectList.cs" />
+    <Compile Include="Models\RequestObjectList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
