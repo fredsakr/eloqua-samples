@@ -13,7 +13,7 @@ namespace EmailSample.Tests
         [TestFixtureSetUp]
         public void Init()
         {
-            _emailHelper = new EmailHelper("site", "user", "password",
+            _emailHelper = new EmailHelper("site", "user", "pass",
                                                            "https://secure.eloqua.com/API/REST/1.0/");
         }
         [Test]
@@ -41,9 +41,11 @@ namespace EmailSample.Tests
                 emailHeaderId = 1,
                 encodingId = 1,
                 emailGroupId = 1,
+                subject = "sample",
                 htmlContent = new RawHtmlContent()
                                   {
-                                      html = "<html><body>test</body></html>"
+                                      type = "RawHtmlContent",
+                                      html = "<html><head></head><body>test</body></html>"
                                   }
             };
 
