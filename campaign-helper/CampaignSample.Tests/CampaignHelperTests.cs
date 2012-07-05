@@ -13,7 +13,7 @@ namespace CampaignSample.Tests
         [TestFixtureSetUp]
         public void Init()
         {
-            _campaignHelper = new CampaignHelper("instance", "user", "password", "https://qasecure.eloquacorp.com/API/REST/1.0/");
+            _campaignHelper = new CampaignHelper("site", "user", "password", "https://secure.eloqua.com/API/REST/1.0/");
         }
 
         [Test]

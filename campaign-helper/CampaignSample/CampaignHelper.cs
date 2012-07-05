@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using RestSharp;
 using CampaignSample.Models;
@@ -80,6 +81,8 @@ namespace CampaignSample
                                     {
                                         name = "sample campaign",
                                         campaignType = "sample",
+                                        startAt = ConvertToUnixEpoch(DateTime.Now),
+                                        endAt = ConvertToUnixEpoch(DateTime.Today.AddDays(1)),
                                         elements = new List<CampaignElement>
                                                        {
                                                            new CampaignSegment
@@ -157,6 +160,17 @@ namespace CampaignSample
             IRestResponse<Campaign> response = _client.Execute<Campaign>(request);
 
             return response.Data;
+        }
+
+        #endregion
+
+        #region Unix time 
+
+        private static DateTime _unixEpochTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+
+        private static long ConvertToUnixEpoch(DateTime date)
+        {
+            return (long) new TimeSpan(date.Ticks - _unixEpochTime.Ticks).TotalSeconds;
         }
 
         #endregion
