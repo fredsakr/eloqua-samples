@@ -11,6 +11,7 @@ namespace CampaignSample
         #region properties
 
         private readonly RestClient _client;
+        private CampaignElementHelper _elementHelper;
 
         #endregion
 
@@ -22,6 +23,8 @@ namespace CampaignSample
                           {
                               Authenticator = new HttpBasicAuthenticator(instance + "\\" + user, password)
                           };
+
+            _elementHelper = new CampaignElementHelper();
         }
 
         #endregion
@@ -77,6 +80,9 @@ namespace CampaignSample
         /// <returns></returns>
         public Campaign CreateCampaign(int emailId, int segmentId)
         {
+            CampaignEmail campaignEmail = _elementHelper.GetCampaignEmail(emailId, -101);
+            CampaignSegment campaignSegment = _elementHelper.GetCampaignSegment(segmentId, -100, -101);
+
             Campaign campaign = new Campaign
                                     {
                                         name = "sample campaign",
@@ -85,39 +91,8 @@ namespace CampaignSample
                                         endAt = ConvertToUnixEpoch(DateTime.Today.AddDays(1)),
                                         elements = new List<CampaignElement>
                                                        {
-                                                           new CampaignSegment
-                                                               {
-                                                                   id = -100,
-                                                                   type = "CampaignSegment",
-                                                                   segmentId = segmentId,
-                                                                   isRecurring = false,
-                                                                   position = new Position
-                                                                                  {
-                                                                                      x = 10,
-                                                                                      y = 10
-                                                                                  },
-                                                                   outputTerminals = new List<CampaignOutputTerminal>
-                                                                                         {
-                                                                                             new CampaignOutputTerminal
-                                                                                                 {
-                                                                                                     connectedId = -101,
-                                                                                                     connectedType = "CampaignEmail",
-                                                                                                     terminalType = "out"
-                                                                                                 }
-                                                                                         }
-                                                               },
-                                                           new CampaignEmail
-                                                               {
-                                                                   id = -101,
-                                                                   type = "CampaignEmail",
-                                                                   emailId = emailId,
-                                                                   sendTimePeriod = "sendAllEmailAtOnce",
-                                                                   position = new Position
-                                                                                  {
-                                                                                      x = 100,
-                                                                                      y = 100
-                                                                                  }
-                                                               }
+                                                           campaignSegment,
+                                                           campaignEmail
                                                        }
                                     };
 
@@ -164,7 +139,7 @@ namespace CampaignSample
 
         #endregion
 
-        #region Unix time 
+        #region Unix time
 
         private static DateTime _unixEpochTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
@@ -188,7 +163,6 @@ namespace CampaignSample
 
             IRestResponse<RequestObjectList<Segment>> response = _client.Execute<RequestObjectList<Segment>>(request);
             List<Segment> segments = response.Data.elements;
-
             return segments;
         } 
 

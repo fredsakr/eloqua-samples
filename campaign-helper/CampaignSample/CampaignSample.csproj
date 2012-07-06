@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CampaignElementHelper.cs" />
     <Compile Include="CampaignHelper.cs" />
     <Compile Include="Models\Campaign.cs" />
     <Compile Include="Models\CampaignElement.cs" />
