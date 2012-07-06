@@ -51,6 +51,7 @@
     <Compile Include="Models\CampaignSegment.cs" />
     <Compile Include="Models\Position.cs" />
     <Compile Include="Models\RequestObjectList.cs" />
+    <Compile Include="Models\Segment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

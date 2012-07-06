@@ -174,5 +174,24 @@ namespace CampaignSample
         }
 
         #endregion
+
+        #region Segment helpers
+
+        public List<Segment> SearchSegments(string searchTerm, int page, int pageSize)
+        {
+            RestRequest request = new RestRequest(Method.GET)
+                                      {
+                                          RequestFormat = DataFormat.Json,
+                                          Resource = string.Format("/assets/contact/segments?search={0}&page={1}&count={2}",
+                                                            searchTerm, page, pageSize)
+                                      };
+
+            IRestResponse<RequestObjectList<Segment>> response = _client.Execute<RequestObjectList<Segment>>(request);
+            List<Segment> segments = response.Data.elements;
+
+            return segments;
+        } 
+
+        #endregion
     }
 }

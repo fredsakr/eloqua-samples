@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.Collections.Generic;
+using System.Net;
 using NUnit.Framework;
 using RestSharp;
 using CampaignSample.Models;
@@ -54,6 +55,13 @@ namespace CampaignSample.Tests
             int campaignId = 1;
             Campaign campaign = _campaignHelper.ActivateCampaign(campaignId);
             Assert.AreEqual("active", campaign.status);
+        }
+
+        [Test]
+        public void SearchSegments()
+        {
+            List<Segment> segments = _campaignHelper.SearchSegments("*", 1, 100);
+            Assert.Greater(0, segments.Count);
         }
     }
 }
