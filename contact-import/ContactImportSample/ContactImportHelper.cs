@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using ContactImportHelper.Models;
 using ContactImportSample.RequestObjects;
 using RestSharp;
@@ -95,6 +96,22 @@ namespace ContactImportSample
             Sync sync = response.Data;
 
             return sync;
+        }
+
+        public Sync ImportDataFromFile(string importUri, string fileName, string pathToFile)
+        {
+            RestRequest request = new RestRequest(Method.POST)
+            {
+                Resource = importUri + "/data",
+                RequestFormat = DataFormat.Json
+            };
+            request.AddFile(fileName, pathToFile);
+
+            IRestResponse<Sync> response = _client.Execute<Sync>(request);
+            Sync sync = response.Data;
+
+            return sync;
+
         }
 
         #endregion

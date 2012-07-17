@@ -47,21 +47,31 @@ namespace ContactImportSample.Tests
         {
             Dictionary<string, string> data = new Dictionary<string, string>
                            {
-                               {"C_EmailAddress", "test@test.com"},
-                               {"C_FirstName", "Test"}
+                               {"C_EmailAddress", "test123@test.com"},
+                               {"C_FirstName", "Test123"}
                            };
             Dictionary<string, string> data2 = new Dictionary<string, string>
                            {
-                               {"C_EmailAddress", "test2@test.com"},
-                               {"C_FirstName", "Test2"}
+                               {"C_EmailAddress", "test456@test.com"},
+                               {"C_FirstName", "Test456"}
                            };
 
             List<Dictionary<string, string>> list = new List<Dictionary<string, string>>
                            {
                                data,
                                data2
+
                            };
             Sync sync = _contactImportHelper.ImportData("/contact/import/" + 1, list);
+            Assert.IsNotNullOrEmpty(sync.uri);
+        }
+
+        [Test]
+        public void DataImportFromFileTest()
+        {
+            string fileName = "text.txt";
+            string pathToFile = @"c:\";
+            Sync sync = _contactImportHelper.ImportDataFromFile("/contact/import/" + 1, fileName, pathToFile);
             Assert.IsNotNullOrEmpty(sync.uri);
         }
 
