@@ -105,7 +105,7 @@ namespace ContactImportSample
                 Resource = importUri + "/data",
                 RequestFormat = DataFormat.Json
             };
-            request.AddFile(fileName, pathToFile);
+            request.AddFile(fileName, System.IO.Path.Combine(pathToFile, fileName));
 
             IRestResponse<Sync> response = _client.Execute<Sync>(request);
             Sync sync = response.Data;
