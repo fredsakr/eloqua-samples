@@ -13,8 +13,11 @@ A sample project that demonstrates how to export contacts using the Bulk API
 A sample project that demonstrates how to import contacts using the Bulk API
 
 ## [contact-search](https://github.com/fredsakr/eloqua-samples/tree/master/contact-search)
-A sample project that demonstrates how to search for contacts
+A sample project that demonstrates how to search for Contacts
 
 ## [email-helper](https://github.com/fredsakr/eloqua-samples/tree/master/email-helper)
-A sample project for crud operations on Email using the API  
+A sample project for crud operations on Emails using the API  
 Includes support for sending email to a contact
+
+## [landingPage-helper](https://github.com/fredsakr/eloqua-samples/tree/master/landingPage-helper)
+A sample project for crud operations on Landing Pages using the API
