@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactSegmentSample", "ContactSegmentSample\ContactSegmentSample.csproj", "{5748864E-E55C-4A6A-A022-A156C96ABC38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactSegmentSampleTests", "ContactSegmentHelper.Tests\ContactSegmentSampleTests.csproj", "{16B1333F-A091-45BD-9ECE-F814504E4218}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5748864E-E55C-4A6A-A022-A156C96ABC38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5748864E-E55C-4A6A-A022-A156C96ABC38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5748864E-E55C-4A6A-A022-A156C96ABC38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5748864E-E55C-4A6A-A022-A156C96ABC38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16B1333F-A091-45BD-9ECE-F814504E4218}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16B1333F-A091-45BD-9ECE-F814504E4218}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16B1333F-A091-45BD-9ECE-F814504E4218}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16B1333F-A091-45BD-9ECE-F814504E4218}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
