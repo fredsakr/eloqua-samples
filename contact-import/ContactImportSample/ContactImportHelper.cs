@@ -15,6 +15,8 @@ namespace ContactImportSample
 
         private readonly RestClient _client;
 
+        private readonly string _baseUrl = "https://secure.eloqua.com/API/Bulk/1.0/";
+
         #endregion 
 
         #region constructors
@@ -44,22 +46,22 @@ namespace ContactImportSample
         /// <returns>The URI of the import</returns>
         public string CreateImport(Dictionary<string, string> fields)
         {
-            Import import = new Import()
-            {
+            Import import = new Import
+                                {
                 name = "sample import",
                 fields = fields,
                 updateRule = RuleType.always,
                 identifierFieldName = "C_EmailAddress",
                 secondsToRetainData = 3600,
                 isSyncTriggeredOnImport = true,
-                //syncActions = new List<SyncAction>()
-                //                                   {
-                //                                       new SyncAction()
-                //                                           {
-                //                                               action = SyncActionType.add,
-                //                                               destinationUri = "/contact/list/1"
-                //                                           }
-                //                                   }
+                syncActions = new List<SyncAction>()
+                                                   {
+                                                       new SyncAction()
+                                                           {
+                                                               action = SyncActionType.add,
+                                                               destinationUri = "/contact/list/1"
+                                                           }
+                                                   }
             };
 
             RestRequest request = new RestRequest(Method.POST)
@@ -102,35 +104,25 @@ namespace ContactImportSample
 
         public void ImportDataFromCsv(string importUri, string fileToUpload, string username, string password)
         {
-            FileStream rdr = new FileStream(fileToUpload, FileMode.Open);
-            HttpWebRequest req = (HttpWebRequest)WebRequest.Create("https://secure.eloqua.com/API/Bulk/1.0/" + importUri + "/data");
-            req.Method = "POST"; // you might use "POST"
-            req.ContentLength = rdr.Length;
-            req.ContentType = "text/csv";
-            req.AllowWriteStreamBuffering = true;
+            using (FileStream rdr = new FileStream(fileToUpload, FileMode.Open))
+            {
+                var req = (HttpWebRequest) WebRequest.Create(_baseUrl + importUri + "/data");
+                req.Method = "POST";
+                req.ContentLength = rdr.Length;
+                req.ContentType = "text/csv";
+                req.AllowWriteStreamBuffering = true;
+                req.Headers.Add("Authorization", BuildAuthHeader(username, password));
 
-            string credentials = String.Format("{0}:{1}", username, password);
-            byte[] bytes = Encoding.ASCII.GetBytes(credentials);
-            string base64 = Convert.ToBase64String(bytes);
-            string authorization = String.Concat("basic ", base64);
-            req.Headers.Add("Authorization", authorization);
+                using (Stream reqStream = req.GetRequestStream())
+                {
+                    byte[] inData = new byte[rdr.Length];
 
-            Stream reqStream = req.GetRequestStream();
+                    reqStream.Write(inData, 0, (int) rdr.Length);
 
-            byte[] inData = new byte[rdr.Length];
-
-            // Get data from upload file to inData 
-            int bytesRead = rdr.Read(inData, 0, (int) rdr.Length);
-
-            // put data into request stream
-            reqStream.Write(inData, 0, (int) rdr.Length);
-
-            rdr.Close();
-            req.GetResponse();
-
-            // after uploading close stream 
-            reqStream.Close();
-
+                    rdr.Close();
+                    req.GetResponse();
+                }
+            }
         }
 
         #endregion
@@ -212,5 +204,16 @@ namespace ContactImportSample
         }
         #endregion
 
+        #region authentication 
+
+        private string BuildAuthHeader(string username, string password)
+        {
+            string credentials = String.Format("{0}:{1}", username, password);
+            byte[] bytes = Encoding.ASCII.GetBytes(credentials);
+            string base64 = Convert.ToBase64String(bytes);
+            return String.Concat("basic ", base64);
+        }
+
+        #endregion
     }
 }
