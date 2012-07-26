@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
+using System.Text;
 using ContactImportHelper.Models;
 using ContactImportSample.RequestObjects;
 using RestSharp;
@@ -50,14 +52,14 @@ namespace ContactImportSample
                 identifierFieldName = "C_EmailAddress",
                 secondsToRetainData = 3600,
                 isSyncTriggeredOnImport = true,
-                syncActions = new List<SyncAction>()
-                                                   {
-                                                       new SyncAction()
-                                                           {
-                                                               action = SyncActionType.add,
-                                                               destinationUri = "/contact/list/1"
-                                                           }
-                                                   }
+                //syncActions = new List<SyncAction>()
+                //                                   {
+                //                                       new SyncAction()
+                //                                           {
+                //                                               action = SyncActionType.add,
+                //                                               destinationUri = "/contact/list/1"
+                //                                           }
+                //                                   }
             };
 
             RestRequest request = new RestRequest(Method.POST)
@@ -98,19 +100,36 @@ namespace ContactImportSample
             return sync;
         }
 
-        public Sync ImportDataFromFile(string importUri, string fileName, string pathToFile)
+        public void ImportDataFromCsv(string importUri, string fileToUpload, string username, string password)
         {
-            RestRequest request = new RestRequest(Method.POST)
-            {
-                Resource = importUri + "/data",
-                RequestFormat = DataFormat.Json
-            };
-            request.AddFile(fileName, System.IO.Path.Combine(pathToFile, fileName));
+            FileStream rdr = new FileStream(fileToUpload, FileMode.Open);
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create("https://secure.eloqua.com/API/Bulk/1.0/" + importUri + "/data");
+            req.Method = "POST"; // you might use "POST"
+            req.ContentLength = rdr.Length;
+            req.ContentType = "text/csv";
+            req.AllowWriteStreamBuffering = true;
 
-            IRestResponse<Sync> response = _client.Execute<Sync>(request);
-            Sync sync = response.Data;
+            string credentials = String.Format("{0}:{1}", username, password);
+            byte[] bytes = Encoding.ASCII.GetBytes(credentials);
+            string base64 = Convert.ToBase64String(bytes);
+            string authorization = String.Concat("basic ", base64);
+            req.Headers.Add("Authorization", authorization);
 
-            return sync;
+            Stream reqStream = req.GetRequestStream();
+
+            byte[] inData = new byte[rdr.Length];
+
+            // Get data from upload file to inData 
+            int bytesRead = rdr.Read(inData, 0, (int) rdr.Length);
+
+            // put data into request stream
+            reqStream.Write(inData, 0, (int) rdr.Length);
+
+            rdr.Close();
+            req.GetResponse();
+
+            // after uploading close stream 
+            reqStream.Close();
 
         }
 
@@ -192,5 +211,6 @@ namespace ContactImportSample
             return contactLists;
         }
         #endregion
+
     }
 }

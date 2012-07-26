@@ -9,10 +9,14 @@ namespace ContactImportSample.Tests
     {
         private ContactImportHelper _contactImportHelper;
 
+        private string _site = "site";
+        private string _user = "user";
+        private string _password = "password";
+
         [TestFixtureSetUp]
         public void Init()
         {
-            _contactImportHelper = new ContactImportHelper("site", "user", "password",
+            _contactImportHelper = new ContactImportHelper(_site, _user, _password,
                                                            "https://secure.eloqua.com/API/Bulk/1.0/");
         }
 
@@ -67,18 +71,16 @@ namespace ContactImportSample.Tests
         }
 
         [Test]
-        public void DataImportFromFileTest()
+        public void DataImportFromCsvTest()
         {
-            string fileName = "text.txt";
-            string pathToFile = @"c:\";
-            Sync sync = _contactImportHelper.ImportDataFromFile("/contact/import/" + 1, fileName, pathToFile);
-            Assert.IsNotNullOrEmpty(sync.uri);
+            string pathToFile = @"c:\tmp\text.csv";
+            _contactImportHelper.ImportDataFromCsv("/contact/import/" + 350, pathToFile, _site + "\\" + _user, _password);
         }
 
         [Test]
         public void GetSyncResult()
         {
-            RequestObjectList<SyncResult> syncResult = _contactImportHelper.CheckSyncResult("/sync/1");
+            RequestObjectList<SyncResult> syncResult = _contactImportHelper.CheckSyncResult("/sync/554");
             Assert.Greater(0, syncResult.elements.Count);
         }
     }
