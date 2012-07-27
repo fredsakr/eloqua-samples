@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActivitySample", "ActivitySample\ActivitySample.csproj", "{65C7C603-8111-44F4-B1BE-340A2843B41A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActivitySampleTests", "ActivityHelperTests\ActivitySampleTests.csproj", "{FDC0DD63-4510-4DD0-86CB-8A3A6E0F6E08}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{65C7C603-8111-44F4-B1BE-340A2843B41A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65C7C603-8111-44F4-B1BE-340A2843B41A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65C7C603-8111-44F4-B1BE-340A2843B41A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65C7C603-8111-44F4-B1BE-340A2843B41A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDC0DD63-4510-4DD0-86CB-8A3A6E0F6E08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDC0DD63-4510-4DD0-86CB-8A3A6E0F6E08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDC0DD63-4510-4DD0-86CB-8A3A6E0F6E08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDC0DD63-4510-4DD0-86CB-8A3A6E0F6E08}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
