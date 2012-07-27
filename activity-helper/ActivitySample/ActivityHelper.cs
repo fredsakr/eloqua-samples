@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using ActivitySample.Models;
 using RestSharp;
+using RestSharp.Serializers;
 
 namespace ActivitySample
 {
@@ -32,7 +33,7 @@ namespace ActivitySample
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public List<Activity> GetActivities(int contactId, DateTime startDate, DateTime endDate, string type, int? count)
+        public string GetActivities(int contactId, DateTime startDate, DateTime endDate, string type, int? count)
         {
             RestRequest request = new RestRequest(Method.GET)
                                       {
@@ -41,8 +42,11 @@ namespace ActivitySample
                                                             contactId, ConvertToUnixEpoch(startDate), ConvertToUnixEpoch(endDate), type, count)
                                       };
 
-            IRestResponse<List<Activity>> response = _client.Execute<List<Activity>>(request);
-            return response.Data;
+//            IRestResponse<List<Activity>> response = _client.Execute<List<Activity>>(request);
+
+            var response = _client.Execute(request);
+
+            return response.Content;
         }
 
         #endregion
