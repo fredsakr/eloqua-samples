@@ -3,6 +3,9 @@ eloqua-samples
 
 Eloqua Samples
 
+## [activity-helper](https://github.com/fredsakr/eloqua-samples/tree/master/activity-helper)
+A sample project that demonstrates how to search for a contact's activities
+
 ## [campaign-helper](https://github.com/fredsakr/eloqua-samples/tree/master/campaign-helper)
 A sample project that demonstrates how to send an email to a segment or list of contacts
 
