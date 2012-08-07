@@ -6,6 +6,7 @@ namespace CampaignSample.Models
     public class Campaign
     {
         public string campaignType { get; set; }
+        public string crmId { get; set; }
         public long? endAt { get; set; }
         public string id { get; set; }
         public string name { get; set; }
