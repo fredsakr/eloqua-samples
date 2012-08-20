@@ -86,6 +86,7 @@ namespace ContactExportSample
         {
             Sync sync = new Sync
                             {
+                                status = SyncStatusType.active,
                                 syncedInstanceUri = exportUri
                             };
 

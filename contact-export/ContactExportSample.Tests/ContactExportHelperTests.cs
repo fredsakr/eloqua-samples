@@ -37,7 +37,7 @@ namespace ContactExportSample.Tests
             ExportFilter filter = new ExportFilter
                                       {
                                           filterRule = FilterRuleType.member,
-                                          membershipUri = "/contact/filter/1"
+                                          membershipUri = "/contact/filter/200007"
                                       };
 
             Dictionary<string, string> fields = new Dictionary<string, string>
@@ -56,13 +56,13 @@ namespace ContactExportSample.Tests
         [Test]
         public void CreateAndCheckExportStatusTest()
         {
-            const string exportUri = "/contact/export/1";
+            const string exportUri = "/contact/export/158";
             Sync sync = _contactExportHelper.CreateSync(exportUri);
             Assert.IsNotNullOrEmpty(sync.uri);
 
             // Get the sync's status (wait and try)
             sync = _contactExportHelper.GetSync(sync.uri);
-            Assert.AreEqual("active", sync.status);
+            Assert.AreEqual("success", sync.status);
         }
 
         [Test]
