@@ -179,7 +179,7 @@ namespace ContactImportSample
         }
 
         /// <summary>
-        /// Invoke a REST Request to retrieve a list of <see cref="Field"/> from the API
+        /// Invoke a REST Request to retrieve a list of <see cref="ContactList"/> from the API
         /// </summary>
         /// <param name="searchTerm"></param>
         /// <param name="page"></param>
