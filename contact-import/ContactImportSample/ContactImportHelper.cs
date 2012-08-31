@@ -39,14 +39,14 @@ namespace ContactImportSample
         #region Step 2 : Configure the Import
 
         /// <summary>
-        /// The <see cref="Import"/> definition contains references to the fields being imported
-        /// as well as other metadata used in the import.
-        /// Includes SyncAction : add contacts to a list
+        /// Create the structure of the Import, a template containing references to the
+        /// fields being imported as well as other metadata used to define the import.
+        /// SyncAction : add contacts to a list
         /// </summary>
         /// <param name="fields">The list of contact fields that will be used in the data import</param>
         /// <param name="listId">The id of the list to which the contacts will be added</param>
         /// <returns>The URI of the import</returns>
-        public string CreateImport(Dictionary<string, string> fields, int listId)
+        public string CreateImportStructure(Dictionary<string, string> fields, int listId)
         {
             Import import = new Import
                                 {
@@ -133,6 +133,7 @@ namespace ContactImportSample
 
         /// <summary>
         /// Check the <see cref="Sync"/> result Status
+        /// note : use polling until the sync is complete
         /// </summary>
         /// <param name="syncUri"></param>
         /// <returns></returns>
@@ -173,9 +174,7 @@ namespace ContactImportSample
             {
                 Console.WriteLine("Name: " + field.name);
                 Console.WriteLine("Internal Name: " + field.internalName);
-                // do something...
             }
-
             return fields;
         }
 

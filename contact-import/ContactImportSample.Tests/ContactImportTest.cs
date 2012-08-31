@@ -46,8 +46,10 @@ namespace ContactImportSample.Tests
                              };
 
             // the id of the list to which the contacts will be added
+            // see ContactImportSample.GetContactList() method for retrieving lists with identifiers
             const int listId = 123;
-            var result = _contactImportHelper.CreateImport(fields, listId);
+
+            var result = _contactImportHelper.CreateImportStructure(fields, listId);
             Assert.IsNotNullOrEmpty(result);
         }
 
@@ -96,8 +98,9 @@ namespace ContactImportSample.Tests
         [Test]
         public void CompleteImportTest()
         {
-            // provide a method to search for Contact Lists in your install
-            // note : in our example we're using a hardcoded listId = 123
+            // Search for Contact Lists in your install
+            // Note : this test uses a hardcoded listId = 123
+            // Todo : create list for test and destroy on cleanup
             List<ContactList> contactLists = _contactImportHelper.GetContactLists("*", 1, 1);
             Assert.AreEqual(1, contactLists.Count);
 
@@ -108,13 +111,13 @@ namespace ContactImportSample.Tests
                                  {"C_FirstName", "{{Contact.Field(C_FirstName)}}"},
                              };
 
-            // the id of the list to which the contacts will be added
+            // The id of the list to which the contacts will be added
             const int listId = 123;
             
-            // create the definition of the import
-            var importUri = _contactImportHelper.CreateImport(fields, listId);
+            // Create the definition (structure) of the import
+            var importUri = _contactImportHelper.CreateImportStructure(fields, listId);
 
-            // define some data
+            // Define contact data that will be imported
             Dictionary<string, string> data = new Dictionary<string, string>
                            {
                                {"C_EmailAddress", "test123@test.com"},
@@ -132,11 +135,11 @@ namespace ContactImportSample.Tests
                                data2
                            };
 
-            // transfer the data to the import Uri
+            // Transfer the data to the import Uri
             Sync sync = _contactImportHelper.ImportData("/contact/import/" + importUri, list);
 
-            // verify the status and result of the synch
-            // note : use polling until the sync is no longer pending (complete or fail)
+            // Verify the status and result of the synch
+            // Note : use polling until the sync is complete
             var result = _contactImportHelper.CheckSyncResult(sync.uri);
         }
 
