@@ -40,11 +40,13 @@ namespace ContactImportSample
 
         /// <summary>
         /// The <see cref="Import"/> definition contains references to the fields being imported
-        /// as well as other metadata used in the import. 
+        /// as well as other metadata used in the import.
+        /// Includes SyncAction : add contacts to a list
         /// </summary>
-        /// <param name="fields"></param>
+        /// <param name="fields">The list of contact fields that will be used in the data import</param>
+        /// <param name="listId">The id of the list to which the contacts will be added</param>
         /// <returns>The URI of the import</returns>
-        public string CreateImport(Dictionary<string, string> fields)
+        public string CreateImport(Dictionary<string, string> fields, int listId)
         {
             Import import = new Import
                                 {
@@ -59,7 +61,7 @@ namespace ContactImportSample
                                                        new SyncAction()
                                                            {
                                                                action = SyncActionType.add,
-                                                               destinationUri = "/contact/list/1"
+                                                               destinationUri = "/contact/list/" + listId
                                                            }
                                                    }
             };
