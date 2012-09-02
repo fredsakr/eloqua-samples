@@ -60,7 +60,7 @@ namespace ContactExportSample.Tests
             Sync sync = _contactExportHelper.CreateSync(exportUri);
             Assert.IsNotNullOrEmpty(sync.uri);
 
-            // Get the sync's status (wait and try)
+            // Get the sync's status (use polling)
             sync = _contactExportHelper.GetSync(sync.uri);
             Assert.AreEqual("success", sync.status);
         }
