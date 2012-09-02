@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="ActivityHelper.cs" />
     <Compile Include="Models\Activity.cs" />
+    <Compile Include="Models\ActivityList.cs" />
     <Compile Include="Models\ActivityType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

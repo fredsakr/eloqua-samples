@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using ActivitySample;
-using ActivitySample.Models;
 using NUnit.Framework;
 
 namespace ActivityHelperTests
@@ -18,12 +16,12 @@ namespace ActivityHelperTests
         }
 
         [Test]
-        public void GetLandingPage()
+        public void GetActivities()
         {
-            DateTime startDate = new DateTime(2012, 1, 1);
-            DateTime endDate = new DateTime(2012, 7, 1);
-            var activities = _activityHelper.GetActivities(380458, startDate, endDate, Enum.GetName(typeof(ActivitySample.Models.ActivityType), 2), 10);
-//            Assert.Greater(0, activities.Count);
+            DateTime startDate = new DateTime(2010, 1, 1);
+            DateTime endDate = new DateTime(2011, 7, 1);
+            var list = _activityHelper.GetActivities(380458, startDate, endDate, Enum.GetName(typeof(ActivitySample.Models.ActivityType), 2), 10);
+            Assert.Greater(0, list.activity.Count);
         }
     }
 }

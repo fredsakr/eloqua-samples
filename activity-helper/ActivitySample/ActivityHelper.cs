@@ -33,7 +33,7 @@ namespace ActivitySample
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public string GetActivities(int contactId, DateTime startDate, DateTime endDate, string type, int? count)
+        public ActivityList GetActivities(int contactId, DateTime startDate, DateTime endDate, string type, int? count)
         {
             RestRequest request = new RestRequest(Method.GET)
                                       {
@@ -42,11 +42,9 @@ namespace ActivitySample
                                                             contactId, ConvertToUnixEpoch(startDate), ConvertToUnixEpoch(endDate), type, count)
                                       };
 
-//            IRestResponse<List<Activity>> response = _client.Execute<List<Activity>>(request);
+            IRestResponse<ActivityList> response = _client.Execute<ActivityList>(request);
 
-            var response = _client.Execute(request);
-
-            return response.Content;
+            return response.Data;
         }
 
         #endregion
