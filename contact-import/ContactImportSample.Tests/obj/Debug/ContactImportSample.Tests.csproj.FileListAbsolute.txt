@@ -1,9 +1,0 @@
-C:\Git\eloqua-samples\contact-import\ContactImportSample.Tests\bin\Debug\ContactImportSample.Tests.dll
-C:\Git\eloqua-samples\contact-import\ContactImportSample.Tests\bin\Debug\ContactImportSample.Tests.pdb
-C:\Git\eloqua-samples\contact-import\ContactImportSample.Tests\bin\Debug\ContactImportSample.dll
-C:\Git\eloqua-samples\contact-import\ContactImportSample.Tests\bin\Debug\nunit.framework.dll
-C:\Git\eloqua-samples\contact-import\ContactImportSample.Tests\bin\Debug\RestSharp.dll
-C:\Git\eloqua-samples\contact-import\ContactImportSample.Tests\bin\Debug\ContactImportSample.pdb
-C:\Git\eloqua-samples\contact-import\ContactImportSample.Tests\obj\Debug\ResolveAssemblyReference.cache
-C:\Git\eloqua-samples\contact-import\ContactImportSample.Tests\obj\Debug\ContactImportSample.Tests.dll
-C:\Git\eloqua-samples\contact-import\ContactImportSample.Tests\obj\Debug\ContactImportSample.Tests.pdb
