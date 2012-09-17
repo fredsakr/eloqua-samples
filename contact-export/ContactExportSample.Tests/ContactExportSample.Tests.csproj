@@ -32,10 +32,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="nunit.framework">
-      <HintPath>..\References\nunit.framework.dll</HintPath>
+      <HintPath>..\..\References\nunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="RestSharp, Version=103.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\References\RestSharp.dll</HintPath>
+    <Reference Include="RestSharp">
+      <HintPath>..\..\References\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

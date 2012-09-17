@@ -1,0 +1,9 @@
+C:\Git\eloqua-samples\email-helper\EmailSample.Tests\bin\Debug\EmailSample.Tests.dll
+C:\Git\eloqua-samples\email-helper\EmailSample.Tests\bin\Debug\EmailSample.Tests.pdb
+C:\Git\eloqua-samples\email-helper\EmailSample.Tests\bin\Debug\EmailSample.dll
+C:\Git\eloqua-samples\email-helper\EmailSample.Tests\bin\Debug\nunit.framework.dll
+C:\Git\eloqua-samples\email-helper\EmailSample.Tests\bin\Debug\RestSharp.dll
+C:\Git\eloqua-samples\email-helper\EmailSample.Tests\bin\Debug\EmailSample.pdb
+C:\Git\eloqua-samples\email-helper\EmailSample.Tests\obj\Debug\ResolveAssemblyReference.cache
+C:\Git\eloqua-samples\email-helper\EmailSample.Tests\obj\Debug\EmailSample.Tests.dll
+C:\Git\eloqua-samples\email-helper\EmailSample.Tests\obj\Debug\EmailSample.Tests.pdb
