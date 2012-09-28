@@ -97,7 +97,7 @@ namespace CustomDataImportSampleTests
                                                         };
 
             // import the data
-            Sync sync = _helper.ImportData("/contact/import/" + 1, list);
+            Sync sync = _helper.ImportData(importUri, list);
             Assert.IsNotNullOrEmpty(sync.uri);
 
             // poll results until the sync is complete
