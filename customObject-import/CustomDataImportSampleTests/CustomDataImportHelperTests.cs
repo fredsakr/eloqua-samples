@@ -27,7 +27,7 @@ namespace CustomDataImportSampleTests
             const string password = "password";
 
             _helper = new CustomDataImportHelper(site, user, password, "https://secure.eloqua.com/API/bulk/1.0/");
-            _dataHelper = new CustomDataHelper(site, user, password, "https://secure.eloqua.com/API/data/1.0/");
+            _dataHelper = new CustomDataHelper(site, user, password, "https://secure.eloqua.com/API/bulk/1.0/");
         }
 
         #endregion
@@ -57,10 +57,16 @@ namespace CustomDataImportSampleTests
 
             // define the list of fields used in the import
             // for the purposes of this sample, the fields have been hardcoded
-            Dictionary<string, string> importFields = new Dictionary<string, string>();
-            importFields.Add("Email_Address1", "{{CustomObject[48].Field[370]}}");
-            importFields.Add("First_Name1", "{{CustomObject[48].Field[371]}}");
-            importFields.Add("Last_Name1", "{{CustomObject[48].Field[372]}}");
+            Dictionary<string, string> importFields = new Dictionary<string, string>
+                                                          {
+                                                              {"Email_Address1", "{{CustomObject[48].Field[370]}}"},
+                                                              {"First_Name1", "{{CustomObject[48].Field[371]}}"},
+                                                              {"Last_Name1", "{{CustomObject[48].Field[372]}}"},
+                                                              {
+                                                                  "EmailAddressField",
+                                                                  "{{CustomObject[48].Contact.Field(C_EmailAddress)}}"
+                                                                  }
+                                                          };
 
             // create the structure for the import
             Import import = _helper.CreateImportStructure(customObjectId, importFields);
@@ -68,15 +74,21 @@ namespace CustomDataImportSampleTests
             string importUri = import.uri;
 
             // define some sample data
-            Dictionary<string, string> data = new Dictionary<string, string>();
-            data.Add("Email_Address1", "sample");
-            data.Add("First_Name1", "sample");
-            data.Add("Last_Name1", "sample");
+            Dictionary<string, string> data = new Dictionary<string, string>
+                                                  {
+                                                      {"Email_Address1", "sample"},
+                                                      {"First_Name1", "sample"},
+                                                      {"Last_Name1", "sample"},
+                                                      {"EmailAddressField", "sample@test.com"}
+                                                  };
 
-            Dictionary<string, string> data2 = new Dictionary<string, string>();
-            data.Add("Email_Address1", "sample2");
-            data.Add("First_Name1", "sample2");
-            data.Add("Last_Name1", "sample2");
+            Dictionary<string, string> data2 = new Dictionary<string, string>
+                                                   {
+                                                       {"Email_Address1", "sample2"},
+                                                       {"First_Name1", "sample2"},
+                                                       {"Last_Name1", "sample2"},
+                                                       {"EmailAddressField", "sample2@test.com"}
+                                                   };
 
             List<Dictionary<string, string>> list = new List<Dictionary<string, string>>
                                                         {

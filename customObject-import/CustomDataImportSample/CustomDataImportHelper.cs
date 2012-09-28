@@ -38,7 +38,7 @@ namespace CustomDataImportSample
                                     name = "sample import",
                                     fields = fields,
                                     updateRule = RuleType.ifNewIsNotNull,
-                                    identifierFieldName = "C_EmailAddress",
+                                    identifierFieldName = "Email_Address1",
                                     secondsToRetainData = 3600,
                                     isSyncTriggeredOnImport = true,
                                     //syncActions = new List<SyncAction>()
@@ -53,8 +53,10 @@ namespace CustomDataImportSample
 
             RestRequest request = new RestRequest(Method.POST)
                                       {
-                                          Resource = string.Format("/customObjects/{0}/import", id)
+                                          RequestFormat = DataFormat.Json,
+                                          Resource = string.Format("/customObject/{0}/import", id)
                                       };
+            request.AddBody(import);
 
             IRestResponse<Import> response = _client.Execute<Import>(request);
             return response.Data;
