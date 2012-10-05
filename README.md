@@ -18,6 +18,9 @@ A sample project that demonstrates how to import contacts using the Bulk API
 ## [contact-search](https://github.com/fredsakr/eloqua-samples/tree/master/contact-search)
 A sample project that demonstrates how to search for Contacts
 
+## [customObject-helper](https://github.com/fredsakr/eloqua-samples/tree/master/customObject-helper)
+A sample project that demonstrates how to create and manage custom objects using the Rest API
+
 ## [customObject-import](https://github.com/fredsakr/eloqua-samples/tree/master/customObject-import)
 A sample project that demonstrates how to import custom objects using the Bulk API
 
