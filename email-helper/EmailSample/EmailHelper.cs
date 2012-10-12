@@ -14,7 +14,7 @@ namespace EmailSample
         #endregion
 
         #region constructors
-        
+
         /// <summary>
         /// Tbe constructor is responsible for setting up the Client
         /// </summary>
@@ -24,8 +24,7 @@ namespace EmailSample
         /// <param name="baseUrl"></param>
         public EmailHelper(string instance, string user, string password, string baseUrl)
         {
-            _client = new RestClient(baseUrl)
-                          {Authenticator = new HttpBasicAuthenticator(instance + "\\" + user, password)};
+            _client = new RestClient(baseUrl) { Authenticator = new HttpBasicAuthenticator(instance + "\\" + user, password) };
         }
 
         #endregion
@@ -57,7 +56,7 @@ namespace EmailSample
         /// <param name="page"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        public List<Email> GetEmail (string searchTerm, int page, int pageSize)
+        public List<Email> GetEmail(string searchTerm, int page, int pageSize)
         {
             RestRequest request = new RestRequest(Method.GET)
                                       {
@@ -72,7 +71,7 @@ namespace EmailSample
             Console.WriteLine("Total :" + response.Data.total);
 
             return response.Data.elements;
-        }  
+        }
 
         /// <summary>
         /// Create a new Email
@@ -119,25 +118,24 @@ namespace EmailSample
         /// <param name="id"></param>
         public void DeleteEmail(int id)
         {
-            RestRequest request = new RestRequest(Method.DELETE)
-                                      {Resource = "/assets/email/" + id, RequestFormat = DataFormat.Json};
+            RestRequest request = new RestRequest(Method.DELETE) { Resource = "/assets/email/" + id, RequestFormat = DataFormat.Json };
 
             _client.Execute<Email>(request);
         }
 
         #endregion
 
-        #region send email to a contact
-        
+        #region send saved email to a contact
+
         /// <summary>
         /// Sending an Email is also known as an Email Deployment
         /// </summary>
         /// <param name="contactId"></param>
         /// <param name="email"></param>
         /// <returns></returns>
-        public Deployment SendEmailToContact(int contactId, Email email)
+        public EmailDeployment SendEmailToContact(int contactId, Email email)
         {
-            Deployment deployment = new Deployment
+            EmailTestDeployment deployment = new EmailTestDeployment
                                         {
                                             contactId = contactId,
                                             email = email,
@@ -152,17 +150,48 @@ namespace EmailSample
                                       };
             request.AddBody(deployment);
 
-            IRestResponse<Deployment> response = _client.Execute<Deployment>(request);
+            IRestResponse<EmailDeployment> response = _client.Execute<EmailDeployment>(request);
 
             return response.Data;
         }
 
+        #endregion
+
+        #region send custom email to a list of contacts
+
         /// <summary>
-        /// Retrieve a Deployment
+        /// Sending an Email is also known as an Email Deployment
         /// </summary>
-        /// <param name="deploymentId"></param>
+        /// <param name="contacts"></param>
+        /// <param name="email"></param>
         /// <returns></returns>
-        public Deployment GetDeployment(int deploymentId)
+        public EmailDeployment SendCustomEmailToAddress(List<Contact> contacts, Email email)
+        {
+            EmailInlineDeployment deployment = new EmailInlineDeployment()
+            {
+                contacts = contacts,
+                email = email,
+                name = "sample deployment",
+                type = "EmailInlineDeployment"
+            };
+
+            RestRequest request = new RestRequest(Method.POST)
+            {
+                Resource = "/assets/email/deployment",
+                RequestFormat = DataFormat.Json
+            };
+            request.AddBody(deployment);
+
+            IRestResponse<EmailDeployment> response = _client.Execute<EmailDeployment>(request);
+
+            return response.Data;
+        }
+
+        #endregion
+
+        #region deployments
+
+        public EmailDeployment GetDeployment(int deploymentId)
         {
             RestRequest request = new RestRequest(Method.GET)
                                       {
@@ -170,9 +199,21 @@ namespace EmailSample
                                           Resource = "/assets/email/deployment/" + deploymentId
                                       };
 
-            IRestResponse<Deployment> response = _client.Execute<Deployment>(request);
+            IRestResponse<EmailDeployment> response = _client.Execute<EmailDeployment>(request);
             return response.Data;
         }
+
+        public List<EmailDeployment> GetDeployments(string searchTerm, int page, int pageSize)
+        {
+            var request = new RestRequest(Method.GET)
+                              {
+                                  Resource =
+                                      string.Format("/assets/email/deployments?search={0}&page={1}&count={2}",
+                                                    searchTerm, page, pageSize)
+                              };
+            var response = _client.Execute<RequestObjectList<EmailDeployment>>(request);
+            return response.Data.elements;
+        } 
 
         #endregion
     }

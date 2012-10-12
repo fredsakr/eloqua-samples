@@ -44,10 +44,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EmailHelper.cs" />
+    <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Content\HtmlContent.cs" />
     <Compile Include="Models\Content\RawHtmlContent.cs" />
     <Compile Include="Models\Deployment.cs" />
     <Compile Include="Models\Email.cs" />
+    <Compile Include="Models\EmailInlineDeployment.cs" />
+    <Compile Include="Models\EmailTestDeployment.cs" />
     <Compile Include="Models\RequestObjectList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

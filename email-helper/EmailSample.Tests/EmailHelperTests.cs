@@ -13,7 +13,7 @@ namespace EmailSample.Tests
         [TestFixtureSetUp]
         public void Init()
         {
-            _emailHelper = new EmailHelper("site", "user", "pass",
+            _emailHelper = new EmailHelper("site", "user", "password",
                                                            "https://secure.eloqua.com/API/REST/1.0/");
         }
         [Test]
@@ -56,17 +56,62 @@ namespace EmailSample.Tests
         [Test]
         public void DeleteEmailTest()
         {
+            for (int i = 10; i < 70; i++)
+            {
+                _emailHelper.DeleteEmail(i);
+            }
+
             int emailId = 1;
             _emailHelper.DeleteEmail(emailId);
         }
 
         [Test]
-        public void SendEmailTest()
+        public void SendEmailToContactTest()
         {
-            int contactId = 1;
-            Email email = _emailHelper.GetEmail(1);
+            int contactId = 152365;
+            Email email = _emailHelper.GetEmail(75);
 
             _emailHelper.SendEmailToContact(contactId, email);
+        }
+
+        [Test]
+        public void SendCustomEmailToAddress()
+        {
+            var contact = new Contact()
+                              {
+                                  id = 152365,
+                                  emailAddress = "fred.sakr@live.com"
+                              };
+            var email = new Email()
+                            {
+                                name = "sample email",
+                                htmlContent = new RawHtmlContent()
+                                                  {
+                                                      html = "<html><head></head><body>test</body></html>",
+                                                      type = "RawHtmlContent"
+                                                  }
+                            };
+
+            var contacts = new List<Contact>();
+            contacts.Add(contact);
+
+            var response = _emailHelper.SendCustomEmailToAddress(contacts, email);
+            Assert.IsNotNull(response);
+        }
+
+        [Test]
+        public void SearchDeploymentsTest()
+        {
+            var response = _emailHelper.GetDeployments("*", 1, 100);
+            Assert.Greater(0, response.Count);
+        }
+
+        [Test]
+        public void GetDeploymentTest()
+        {
+            int id = 23;
+            var response = _emailHelper.GetDeployment(id);
+            Assert.AreEqual(id, response.id);
         }
     }
 }
