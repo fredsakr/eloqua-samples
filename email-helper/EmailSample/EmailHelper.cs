@@ -191,7 +191,7 @@ namespace EmailSample
 
         #region deployments
 
-        public EmailDeployment GetDeployment(int deploymentId)
+        public EmailInlineDeployment GetDeployment(int deploymentId)
         {
             RestRequest request = new RestRequest(Method.GET)
                                       {
@@ -199,7 +199,7 @@ namespace EmailSample
                                           Resource = "/assets/email/deployment/" + deploymentId
                                       };
 
-            IRestResponse<EmailDeployment> response = _client.Execute<EmailDeployment>(request);
+            IRestResponse<EmailInlineDeployment> response = _client.Execute<EmailInlineDeployment>(request);
             return response.Data;
         }
 

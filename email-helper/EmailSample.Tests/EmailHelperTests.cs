@@ -79,7 +79,7 @@ namespace EmailSample.Tests
         {
             var contact = new Contact()
                               {
-                                  id = 152365,
+                                  id = 1,
                                   emailAddress = "fred.sakr@live.com"
                               };
             var email = new Email()
@@ -109,7 +109,7 @@ namespace EmailSample.Tests
         [Test]
         public void GetDeploymentTest()
         {
-            int id = 23;
+            int id = 1;
             var response = _emailHelper.GetDeployment(id);
             Assert.AreEqual(id, response.id);
         }

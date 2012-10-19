@@ -49,6 +49,7 @@
     <Compile Include="Models\Content\RawHtmlContent.cs" />
     <Compile Include="Models\Deployment.cs" />
     <Compile Include="Models\Email.cs" />
+    <Compile Include="Models\EmailDeploymentStatistics.cs" />
     <Compile Include="Models\EmailInlineDeployment.cs" />
     <Compile Include="Models\EmailTestDeployment.cs" />
     <Compile Include="Models\RequestObjectList.cs" />

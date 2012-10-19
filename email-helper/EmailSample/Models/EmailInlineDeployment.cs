@@ -8,5 +8,6 @@ namespace EmailSample.Models
         public List<Contact> contacts { get; set; }
         public int? openCount { get; set; }
         public int? sendFromUserId { get; set; }
+        public List<EmailDeploymentStatistics> statistics { get; set; } 
     }
 }
