@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomObjectDataSample", "CustomObjectDataSample\CustomObjectDataSample.csproj", "{43254FDB-6F22-4EF6-9B91-86451349621D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomObjectDataTests", "CustomObjectDataTests\CustomObjectDataTests.csproj", "{7D689789-0109-4710-B5FA-B64FC903D828}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{43254FDB-6F22-4EF6-9B91-86451349621D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43254FDB-6F22-4EF6-9B91-86451349621D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43254FDB-6F22-4EF6-9B91-86451349621D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43254FDB-6F22-4EF6-9B91-86451349621D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D689789-0109-4710-B5FA-B64FC903D828}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D689789-0109-4710-B5FA-B64FC903D828}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D689789-0109-4710-B5FA-B64FC903D828}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D689789-0109-4710-B5FA-B64FC903D828}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
