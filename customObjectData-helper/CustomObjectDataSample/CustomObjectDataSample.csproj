@@ -43,7 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomObjectDataHelper.cs" />
+    <Compile Include="CustomObjectFieldHelper.cs" />
     <Compile Include="Models\Data\CustomObject.cs" />
+    <Compile Include="Models\Field.cs" />
     <Compile Include="Models\FieldValue.cs" />
     <Compile Include="Models\SearchResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
