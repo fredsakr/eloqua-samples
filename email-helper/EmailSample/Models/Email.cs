@@ -5,6 +5,8 @@ namespace EmailSample.Models
     public class Email
     {
         public string bouncebackEmail { get; set; }
+        public string createdAt { get; set; }
+        public string createdBy { get; set; }
         public int? emailFooterId { get; set; }
         public int? emailGroupId { get; set; }
         public int? emailHeaderId { get; set; }
@@ -20,5 +22,7 @@ namespace EmailSample.Models
         public string senderName { get; set; }
         public bool sendPlainTextOnly { get; set; }
         public string subject { get; set; }
+        public string updatedAt { get; set; }
+        public string updatedBy { get; set; }
     }
 }

@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Direction.cs" />
     <Compile Include="EmailHelper.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Content\HtmlContent.cs" />

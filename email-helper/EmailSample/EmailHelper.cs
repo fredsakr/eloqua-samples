@@ -55,14 +55,15 @@ namespace EmailSample
         /// <param name="searchTerm"></param>
         /// <param name="page"></param>
         /// <param name="pageSize"></param>
+        /// <param name="orderBy"></param>
         /// <returns></returns>
-        public List<Email> GetEmail(string searchTerm, int page, int pageSize)
+        public List<Email> GetEmail(string searchTerm, int page, int pageSize, string orderBy, Direction direction)
         {
             RestRequest request = new RestRequest(Method.GET)
                                       {
                                           Resource =
-                                              string.Format("/assets/emails?search={0}&page={1}&count={2}", searchTerm,
-                                                            page, pageSize),
+                                              string.Format("/assets/emails?search={0}&page={1}&count={2}&orderBy=createdAt%20{3}", searchTerm,
+                                                            page, pageSize, direction),
                                           RequestFormat = DataFormat.Json
                                       };
 

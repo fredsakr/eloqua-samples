@@ -27,7 +27,7 @@ namespace EmailSample.Tests
         [Test]
         public void GetEmailListTest()
         {
-            List<Email> emails = _emailHelper.GetEmail("*", 1, 100);
+            List<Email> emails = _emailHelper.GetEmail("*", 1, 100, "createdAt", Direction.desc);
             Assert.Greater(0, emails.Count);
         }
 
