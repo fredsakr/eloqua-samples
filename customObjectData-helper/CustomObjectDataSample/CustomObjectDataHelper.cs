@@ -17,7 +17,7 @@ namespace CustomObjectDataSample
                 };
         }
 
-        public SearchResponse<CustomObject> SearchCustomObjects(int customObjectId, string searchTerm, int page, int pageSize)
+        public SearchResponse<CustomObjectData> SearchCustomObjects(int customObjectId, string searchTerm, int page, int pageSize)
         {
             var request = new RestRequest(Method.GET)
                 {
@@ -27,9 +27,25 @@ namespace CustomObjectDataSample
                                       page, pageSize)
                 };
 
-            var response = _client.Execute<SearchResponse<CustomObject>>(request);
+            var response = _client.Execute<SearchResponse<CustomObjectData>>(request);
 
             return response.Data;
         }
+
+        public CustomObjectData CreateCustomObjectData(int customObjectId, CustomObjectData customObjectData)
+        {
+            var request = new RestRequest(Method.POST)
+                {
+                    RequestFormat = DataFormat.Json,
+                    Resource = string.Format("/data/customObject/{0}", customObjectId)
+                };
+
+            request.AddBody(customObjectData);
+
+            var response = _client.Execute<CustomObjectData>(request);
+
+            return response.Data;
+        }
+
     }
 }

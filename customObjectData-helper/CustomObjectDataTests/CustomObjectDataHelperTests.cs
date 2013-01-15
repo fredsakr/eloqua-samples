@@ -1,4 +1,7 @@
-﻿using CustomObjectDataSample;
+﻿using System.Collections.Generic;
+using CustomObjectDataSample;
+using CustomObjectDataSample.Models;
+using CustomObjectDataSample.Models.Data;
 using NUnit.Framework;
 
 namespace CustomObjectDataTests
@@ -12,14 +15,14 @@ namespace CustomObjectDataTests
         [TestFixtureSetUp]
         public void Init()
         {
-            _helper = new CustomObjectDataHelper("site", "user", "password", "https://secure.eloqua.com/API/REST/1.0/");
-            _fieldHelper = new CustomObjectFieldHelper("site", "user", "password", "https://secure.eloqua.com/API/Bulk/1.0/");
+            _helper = new CustomObjectDataHelper("site", "user", "password", "https://secure.eloqua.com/API/REST/2.0/");
+            _fieldHelper = new CustomObjectFieldHelper("site", "user", "password", "https://secure.eloqua.com/API/Bulk/2.0/");
         }
         
         [Test]
         public void GetCustomObjectFieldsTest()
         {
-            int customObjectId = 1;
+            int customObjectId = 160;
             var result = _fieldHelper.GetCustomObjectFields(customObjectId);
             Assert.IsNotNull(result);
         }
@@ -27,9 +30,36 @@ namespace CustomObjectDataTests
         [Test]
         public void SearchCustomObjectTest()
         {
-            int customObjectId = 1;
-            var result = _helper.SearchCustomObjects(customObjectId, "Email_Address1=fred.sakr@eloqua.com", 1, 100);
+            int customObjectId = 160;
+            var result = _helper.SearchCustomObjects(customObjectId, "", 1, 100);
             Assert.Greater(result.elements.Count, 0);
+        }
+
+        [Test]
+        public void CreateCustomObjectTest()
+        {
+            int customObjectId = 160;
+            var customObjectData = new CustomObjectData()
+                {
+                    
+                    fieldValues = new List<FieldValue>()
+                        {
+                            new FieldValue()
+                                {
+                                    id = 896,
+                                    value = "fred.sakr@eloqua.com"
+                                },
+                            new FieldValue()
+                                {
+                                    id = 898,
+                                    value = "unique code"
+                                }
+                        }
+                };
+
+            customObjectData = _helper.CreateCustomObjectData(customObjectId, customObjectData);
+
+            Assert.Greater(0, customObjectData.id);
         }
     }
 }
