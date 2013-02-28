@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactSubscriptionSample", "ContactSubscriptionSample\ContactSubscriptionSample.csproj", "{DC1942C2-283E-4EF7-BA19-0580C696DD49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactSubscriptionHelperTests", "ContactSubscriptionHelperTests\ContactSubscriptionHelperTests.csproj", "{3D685706-4242-424A-B57E-8A31EECB61B8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC1942C2-283E-4EF7-BA19-0580C696DD49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC1942C2-283E-4EF7-BA19-0580C696DD49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC1942C2-283E-4EF7-BA19-0580C696DD49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC1942C2-283E-4EF7-BA19-0580C696DD49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D685706-4242-424A-B57E-8A31EECB61B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D685706-4242-424A-B57E-8A31EECB61B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D685706-4242-424A-B57E-8A31EECB61B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D685706-4242-424A-B57E-8A31EECB61B8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
