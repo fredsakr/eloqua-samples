@@ -1,6 +1,6 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactImportSample", "ContactImportSample\ContactImportSample.csproj", "{BF8B5F3C-1252-4B6C-9A18-57E81C237ECB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactImportSample.Tests", "ContactImportSample.Tests\ContactImportSample.Tests.csproj", "{6ABE118B-9079-459A-9122-F5A7A3FDE8E3}"

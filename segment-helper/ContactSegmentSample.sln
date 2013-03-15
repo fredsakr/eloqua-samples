@@ -1,6 +1,6 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactSegmentSample", "ContactSegmentSample\ContactSegmentSample.csproj", "{5748864E-E55C-4A6A-A022-A156C96ABC38}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactSegmentSampleTests", "ContactSegmentHelper.Tests\ContactSegmentSampleTests.csproj", "{16B1333F-A091-45BD-9ECE-F814504E4218}"

@@ -1,6 +1,6 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomObjectSample", "CustomObjectSample\CustomObjectSample.csproj", "{81E182FA-8EBB-4651-B1D2-49FD9AA63D92}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomObjectSampleTests", "CustomObjectSampleTests\CustomObjectSampleTests.csproj", "{B53BE92A-CB81-48AC-B5AD-4BCC64BDFAAA}"

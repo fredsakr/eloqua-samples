@@ -1,6 +1,6 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailSample", "EmailSample\EmailSample.csproj", "{A7531198-2390-4DF6-B440-571C02A53CB3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailSample.Tests", "EmailSample.Tests\EmailSample.Tests.csproj", "{ED41617C-04E8-4E8A-B3E9-5DFCD46D5A64}"

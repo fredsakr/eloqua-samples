@@ -1,6 +1,6 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomDataImportSample", "CustomDataImportSample\CustomDataImportSample.csproj", "{B2FE7A56-FEC5-48C7-9867-A328CB943614}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomDataImportSampleTests", "CustomDataImportSampleTests\CustomDataImportSampleTests.csproj", "{4F394492-4F3E-4E7B-ACEE-74869B8B49B3}"
