@@ -39,6 +39,9 @@ Includes support for sending email to a contact
 ## [landingPage-helper](https://github.com/fredsakr/eloqua-samples/tree/master/landingPage-helper)
 A sample project for crud operations on Landing Pages using the Rest API
 
+## [optionList-helper](https://github.com/fredsakr/eloqua-samples/tree/master/optionList-helper)
+A sample project for CRUD operations on Option Lists using the Rest API
+
 ## [segment-helper](https://github.com/fredsakr/eloqua-samples/tree/master/segment-helper)
 A sample project for basic operations on Segments using the Rest API
 
