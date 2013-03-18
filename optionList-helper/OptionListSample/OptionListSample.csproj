@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="RestSharp">
-      <HintPath>..\..\eloqua-csharp-rest-client-master\References\RestSharp.dll</HintPath>
+      <HintPath>..\..\..\eloqua-csharp-rest-client-master\References\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

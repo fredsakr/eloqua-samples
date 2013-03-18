@@ -31,11 +31,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="nunit.framework">
-      <HintPath>..\..\..\..\..\Dev\Eloqua Samples\references\nunit.framework.dll</HintPath>
+      <HintPath>..\..\..\eloqua-csharp-rest-client-master\References\nunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="RestSharp, Version=102.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\eloqua-csharp-rest-client-master\References\RestSharp.dll</HintPath>
+    <Reference Include="RestSharp">
+      <HintPath>..\..\..\eloqua-csharp-rest-client-master\References\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
