@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using ActivitySample.Models;
 using RestSharp;
-using RestSharp.Serializers;
+using ActivitySample.Models;
 
 namespace ActivitySample
 {
@@ -28,11 +26,6 @@ namespace ActivitySample
 
         #region Search Operations
 
-        /// <summary>
-        /// Invokes an HTTP GET request to retrieve a list of activities for a Contact
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
         public ActivityList GetActivities(int contactId, DateTime startDate, DateTime endDate, string type, int? count)
         {
             RestRequest request = new RestRequest(Method.GET)
