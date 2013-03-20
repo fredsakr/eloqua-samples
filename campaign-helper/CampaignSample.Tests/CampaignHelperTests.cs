@@ -21,15 +21,15 @@ namespace CampaignSample.Tests
         public void GetCampaign()
         {
             const int campaignId = 1;
-            Campaign campaign = _campaignHelper.GetCampaign(campaignId);
+            Campaign campaign = _campaignHelper.SearchCampaigns(campaignId);
             Assert.AreEqual(campaignId, campaign.id);
         }
 
         [Test]
         public void GetCampaignListTest()
         {
-            IRestResponse response = _campaignHelper.GetCampaign("*", 1, 100);
-            Assert.IsNullOrEmpty(response.Content);
+            IRestResponse response = _campaignHelper.SearchCampaigns("*", 1, 100);
+            Assert.IsNotNullOrEmpty(response.Content);
         }
 
         [Test]

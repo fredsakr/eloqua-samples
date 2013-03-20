@@ -8,7 +8,7 @@ namespace CampaignSample
         /// <summary>
         /// Construct a new Campaign Element of type Email
         /// </summary>
-        /// <param name="emailId"></param>
+        /// <param name="emailId">Unique identifier of the email</param>
         /// <param name="referenceId">An ID used to map/reference this object within the Request.</param>
         /// <returns></returns>
         public CampaignEmail GetCampaignEmail(int emailId, int referenceId)

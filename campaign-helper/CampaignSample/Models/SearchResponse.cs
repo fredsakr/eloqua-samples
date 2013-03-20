@@ -2,7 +2,7 @@
 
 namespace CampaignSample.Models
 {
-    public class RequestObjectList<T>
+    public class SearchResponse<T>
     {
         public List<T> elements { get; set; }
         public int total { get; set; }

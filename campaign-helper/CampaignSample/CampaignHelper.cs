@@ -11,7 +11,7 @@ namespace CampaignSample
         #region properties
 
         private readonly RestClient _client;
-        private CampaignElementHelper _elementHelper;
+        private readonly CampaignElementHelper _elementHelper;
 
         #endregion
 
@@ -31,13 +31,7 @@ namespace CampaignSample
 
         #region campaign helper
 
-        /// <summary>
-        /// Invoke an HTTP GET request to retrieve a <see cref="Campaign"/> by ID
-        /// Note : Limited to Campaigns containing only Segments and Emails
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public Campaign GetCampaign(int id)
+        public Campaign SearchCampaigns(int id)
         {
             RestRequest request = new RestRequest(Method.GET)
                                       {
@@ -49,15 +43,7 @@ namespace CampaignSample
             return response.Data;
         }
 
-        /// <summary>
-        /// Invoke an HTTP GET request to retrieve a List of <see cref="Campaign"/>s
-        /// Note : Limited to Campaigns containing only Segments and Emails
-        /// </summary>
-        /// <param name="searchTerm"></param>
-        /// <param name="page"></param>
-        /// <param name="pageSize"></param>
-        /// <returns></returns>
-        public IRestResponse GetCampaign (string searchTerm, int page, int pageSize)
+        public IRestResponse SearchCampaigns (string searchTerm, int page, int pageSize)
         {
             RestRequest request = new RestRequest(Method.GET)
                                       {
@@ -72,12 +58,8 @@ namespace CampaignSample
         }
 
         /// <summary>
-        /// Invoke an HTTP POST request to create a new <see cref="Campaign"/>
-        /// Note : The campaign will be used to deploy an Email to a Segment
+        /// Limited to campaigns containing emails and segments
         /// </summary>
-        /// <param name="emailId">The ID of the Email that will be sent</param>
-        /// <param name="segmentId">The ID of the Segment to which the Email will be sent</param>
-        /// <returns></returns>
         public Campaign CreateCampaign(int emailId, int segmentId)
         {
             CampaignEmail campaignEmail = _elementHelper.GetCampaignEmail(emailId, -101);
@@ -161,7 +143,7 @@ namespace CampaignSample
                                                             searchTerm, page, pageSize)
                                       };
 
-            IRestResponse<RequestObjectList<Segment>> response = _client.Execute<RequestObjectList<Segment>>(request);
+            IRestResponse<SearchResponse<Segment>> response = _client.Execute<SearchResponse<Segment>>(request);
             List<Segment> segments = response.Data.elements;
             return segments;
         } 
