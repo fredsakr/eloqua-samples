@@ -20,8 +20,8 @@ namespace ActivityHelperTests
         {
             DateTime startDate = new DateTime(2010, 1, 1);
             DateTime endDate = new DateTime(2011, 7, 1);
-            var list = _activityHelper.GetActivities(380458, startDate, endDate, Enum.GetName(typeof(ActivitySample.Models.ActivityType), 2), 10);
-            Assert.Greater(0, list.activity.Count);
+            var list = _activityHelper.GetActivities(380458, startDate, endDate, ActivitySample.Models.ActivityType.emailSend, 10);
+            Assert.Greater(list.Count, 0);
         }
     }
 }
