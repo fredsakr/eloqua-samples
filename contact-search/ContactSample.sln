@@ -1,9 +1,14 @@
-
-Microsoft Visual Studio Solution File, Format Version 11.00
+Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactSample", "ContactSample\ContactSample.csproj", "{A70CE3D5-4A9C-46DB-972E-6BB358502107}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactSample.Tests", "ContactSample.Tests\ContactSample.Tests.csproj", "{98728524-5474-44B9-ADBF-A11D15FCBCC2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{57118430-0432-4964-862F-976E9201351A}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
