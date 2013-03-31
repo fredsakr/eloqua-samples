@@ -45,7 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActivityHelper.cs" />
+    <Compile Include="ActivityClient.cs" />
     <Compile Include="Models\Activity.cs" />
     <Compile Include="Models\ActivityType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

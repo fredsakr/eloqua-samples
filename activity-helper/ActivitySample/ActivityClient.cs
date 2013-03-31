@@ -5,7 +5,7 @@ using ActivitySample.Models;
 
 namespace ActivitySample
 {
-    public class ActivityHelper
+    public class ActivityClient
     {
         #region properties
 
@@ -15,7 +15,7 @@ namespace ActivitySample
 
         #region constructors
 
-        public ActivityHelper(string instance, string user, string password, string baseUrl)
+        public ActivityClient(string instance, string user, string password, string baseUrl)
         {
             _client = new RestClient(baseUrl)
                           {
