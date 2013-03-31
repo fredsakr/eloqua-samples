@@ -2,7 +2,7 @@
 using ActivitySample;
 using NUnit.Framework;
 
-namespace ActivityHelperTests
+namespace ActivitySampleTests
 {
     [TestFixture]
     public class ActivityClientTests
