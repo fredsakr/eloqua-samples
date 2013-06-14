@@ -13,5 +13,6 @@ namespace CampaignSample.Models
         public List<CampaignElement> elements { get; set; }
         public long? startAt { get; set; }
         public string status { get; set; }
+        public string type { get; set; }
     }
 }

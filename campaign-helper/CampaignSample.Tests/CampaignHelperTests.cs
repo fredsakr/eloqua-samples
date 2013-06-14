@@ -14,7 +14,7 @@ namespace CampaignSample.Tests
         [TestFixtureSetUp]
         public void Init()
         {
-            _campaignHelper = new CampaignHelper("site", "user", "password", "https://secure.eloqua.com/API/REST/1.0/");
+            _campaignHelper = new CampaignHelper("site", "user", "password", "https://secure.eloqua.com/API/REST/2.0/");
         }
 
         [Test]
@@ -33,12 +33,27 @@ namespace CampaignSample.Tests
         }
 
         [Test]
-        public void CreateCampaign()
+        public void CreateAndUpdateCampaign()
         {
             int emailId = 1;
             int segmentId = 1;
             Campaign campaign = _campaignHelper.CreateCampaign(emailId, segmentId);
             Assert.IsNotNull(campaign);
+
+            var originalEmail = campaign.elements[1];
+
+            CampaignEmail email = new CampaignEmail
+                {
+                    emailId = 2,
+                    outputTerminals = originalEmail.outputTerminals,
+                    id = originalEmail.id,
+                    type = "CampaignEmail"
+                };
+
+            campaign.elements[1] = email;
+
+            var updatedCampaign = _campaignHelper.UpdateCampaign(campaign);
+            Assert.AreEqual(campaign.id, updatedCampaign.id);
         }
 
         [Test]

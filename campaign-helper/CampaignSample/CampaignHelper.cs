@@ -69,6 +69,7 @@ namespace CampaignSample
                                     {
                                         name = "sample campaign",
                                         campaignType = "sample",
+                                        type = "Campaign",
                                         startAt = ConvertToUnixEpoch(DateTime.Now),
                                         endAt = ConvertToUnixEpoch(DateTime.Today.AddDays(1)),
                                         elements = new List<CampaignElement>
@@ -83,6 +84,23 @@ namespace CampaignSample
                                           Resource = "/assets/campaign",
                                           RequestFormat = DataFormat.Json
                                       };
+            request.AddBody(campaign);
+
+            IRestResponse<Campaign> response = _client.Execute<Campaign>(request);
+
+            return response.Data;
+        }
+
+        /// <summary>
+        /// Limited to campaigns containing emails and segments
+        /// </summary>
+        public Campaign UpdateCampaign(Campaign campaign)
+        {
+            RestRequest request = new RestRequest(Method.PUT)
+            {
+                Resource = string.Format("/assets/campaign/{0}", campaign.id),
+                RequestFormat = DataFormat.Json
+            };
             request.AddBody(campaign);
 
             IRestResponse<Campaign> response = _client.Execute<Campaign>(request);
