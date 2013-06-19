@@ -6,7 +6,7 @@ using CampaignSample.Models;
 
 namespace CampaignSample
 {
-    public class CampaignHelper
+    public class CampaignClient
     {
         #region properties
 
@@ -17,7 +17,7 @@ namespace CampaignSample
 
         #region constructors
 
-        public CampaignHelper(string instance, string user, string password, string baseUrl)
+        public CampaignClient(string instance, string user, string password, string baseUrl)
         {
             _client = new RestClient(baseUrl)
                           {

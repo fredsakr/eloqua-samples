@@ -7,28 +7,28 @@ using CampaignSample.Models;
 namespace CampaignSample.Tests
 {
     [TestFixture]
-    public class CampaignHelperTests
+    public class CampaignClientTests
     {
-        private CampaignHelper _campaignHelper;
+        private CampaignClient _campaignClient;
 
         [TestFixtureSetUp]
         public void Init()
         {
-            _campaignHelper = new CampaignHelper("site", "user", "password", "https://secure.eloqua.com/API/REST/2.0/");
+            _campaignClient = new CampaignClient("site", "user", "password", "https://secure.eloqua.com/API/REST/2.0/");
         }
 
         [Test]
         public void GetCampaign()
         {
             const int campaignId = 1;
-            Campaign campaign = _campaignHelper.SearchCampaigns(campaignId);
+            Campaign campaign = _campaignClient.SearchCampaigns(campaignId);
             Assert.AreEqual(campaignId, campaign.id);
         }
 
         [Test]
         public void GetCampaignListTest()
         {
-            IRestResponse response = _campaignHelper.SearchCampaigns("*", 1, 100);
+            IRestResponse response = _campaignClient.SearchCampaigns("*", 1, 100);
             Assert.IsNotNullOrEmpty(response.Content);
         }
 
@@ -37,7 +37,7 @@ namespace CampaignSample.Tests
         {
             int emailId = 1;
             int segmentId = 1;
-            Campaign campaign = _campaignHelper.CreateCampaign(emailId, segmentId);
+            Campaign campaign = _campaignClient.CreateCampaign(emailId, segmentId);
             Assert.IsNotNull(campaign);
 
             var originalEmail = campaign.elements[1];
@@ -52,7 +52,7 @@ namespace CampaignSample.Tests
 
             campaign.elements[1] = email;
 
-            var updatedCampaign = _campaignHelper.UpdateCampaign(campaign);
+            var updatedCampaign = _campaignClient.UpdateCampaign(campaign);
             Assert.AreEqual(campaign.id, updatedCampaign.id);
         }
 
@@ -60,7 +60,7 @@ namespace CampaignSample.Tests
         public void DeleteCampaign()
         {
             int campaignId = 1;
-            HttpStatusCode status = _campaignHelper.DeleteCampaign(campaignId);
+            HttpStatusCode status = _campaignClient.DeleteCampaign(campaignId);
             Assert.AreEqual(HttpStatusCode.OK, status);
         }
 
@@ -68,14 +68,14 @@ namespace CampaignSample.Tests
         public void ActivateCampaign()
         {
             int campaignId = 1;
-            Campaign campaign = _campaignHelper.ActivateCampaign(campaignId);
+            Campaign campaign = _campaignClient.ActivateCampaign(campaignId);
             Assert.AreEqual("active", campaign.status);
         }
 
         [Test]
         public void SearchSegments()
         {
-            List<Segment> segments = _campaignHelper.SearchSegments("*", 1, 100);
+            List<Segment> segments = _campaignClient.SearchSegments("*", 1, 100);
             Assert.Greater(0, segments.Count);
         }
     }
