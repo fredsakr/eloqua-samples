@@ -46,7 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Direction.cs" />
-    <Compile Include="EmailHelper.cs" />
+    <Compile Include="EmailClient.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Content\HtmlContent.cs" />
     <Compile Include="Models\Content\RawHtmlContent.cs" />
