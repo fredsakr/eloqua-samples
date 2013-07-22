@@ -46,7 +46,9 @@
   <ItemGroup>
     <Compile Include="ImageClient.cs" />
     <Compile Include="Models\Folder.cs" />
+    <Compile Include="Models\ImageFile.cs" />
     <Compile Include="Models\SearchResponse.cs" />
+    <Compile Include="Models\Size.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourceHelper.cs" />
   </ItemGroup>
