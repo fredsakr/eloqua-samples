@@ -48,6 +48,31 @@ A sample project for basic operations on Segments using the Rest API
 ## [user-helper](https://github.com/fredsakr/eloqua-samples/tree/master/user-helper)
 A sample project for retrieve operations on Users using the Rest API
 
+## Endpoint URL
+To determine the base url, you can use the following endpoint : login.eloqua.com/{id}  
+The endpoint, when called with basic authentication, will return details about the URLs for the various APIs.
+     
+```json
+{
+    "site": {
+        "id": 42,
+        "name": "SampleClient"
+    },
+    "user": {
+        "id": 314,
+        "username": "Fred Sakr",
+        "displayName": "Fred Sakr",
+        "firstName": "Fred",
+        "lastName": "Sakr",
+        "emailAddress": "fred.sakr@oracle.com"
+    },
+    "urls": {
+        "base": "https://www05.secure.eloqua.com",
+        "apis"	...
+	}
+}
+```
+
 ## License
 	Copyright [2012] [Fred Sakr]
 	Licensed under the Apache License, Version 2.0 (the "License");
