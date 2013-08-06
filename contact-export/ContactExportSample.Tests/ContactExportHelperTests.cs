@@ -25,10 +25,17 @@ namespace ContactExportSample.Tests
         }
 
         [Test]
-        public void GetContactFilterTest()
+        public void GetContactFiltersTest()
         {
             List<ContactFilter> contactFilters = _contactExportHelper.SearchContactFilters("*", 1, 10);
             Assert.AreEqual(1, contactFilters.Count);
+        }
+
+        [Test]
+        public void GetContactListsTest()
+        {
+            List<ContactList> contactLists = _contactExportHelper.SearchContactLists("*", 1, 10);
+            Assert.AreEqual(1, contactLists.Count);
         }
 
         [Test]
@@ -37,7 +44,7 @@ namespace ContactExportSample.Tests
             ExportFilter filter = new ExportFilter
                                       {
                                           filterRule = FilterRuleType.member,
-                                          membershipUri = "/contact/filter/200007"
+                                          membershipUri = "/contact/list/1",                                          
                                       };
 
             Dictionary<string, string> fields = new Dictionary<string, string>
@@ -46,7 +53,7 @@ namespace ContactExportSample.Tests
                                  {"C_FirstName", "{{Contact.Field(C_FirstName)}}"},
                              };
 
-            const string destinationUri = ""; // not used
+            const string destinationUri = "/contact/list/2"; // not used
 
             string exportUri = _contactExportHelper.CreateExport(fields, destinationUri, filter);
 

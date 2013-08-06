@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="ContactExportHelper.cs" />
     <Compile Include="Models\ContactFilter.cs" />
+    <Compile Include="Models\ContactList.cs" />
     <Compile Include="Models\Export.cs" />
     <Compile Include="Models\ExportFilter.cs" />
     <Compile Include="Models\Field.cs" />

@@ -45,17 +45,17 @@ namespace ContactExportSample
                                 {
                                     name = "sample export",
                                     fields = fields,
-                                    //filter = filter,
-                                    //secondsToAutoDelete = 3600,
-                                    //secondsToRetainData = 3600,
-                                    //syncActions = new List<SyncAction>
-                                    //                  {
-                                    //                      new SyncAction
-                                    //                          {
-                                    //                              action = SyncActionType.add,
-                                    //                              destinationUri = destinationUri
-                                    //                          }
-                                    //                  }
+                                    filter = filter,
+                                    secondsToAutoDelete = 3600,
+                                    secondsToRetainData = 3600,
+                                    syncActions = new List<SyncAction>
+                                                      {
+                                                          new SyncAction
+                                                              {
+                                                                  action = SyncActionType.add,
+                                                                  destinationUri = destinationUri
+                                                              }
+                                                      }
                                 };
 
             RestRequest request = new RestRequest(Method.POST)
@@ -175,6 +175,32 @@ namespace ContactExportSample
             }
 
             return contactFilters;
+        }
+
+        /// <summary>
+        /// Invoke a REST Request to retrieve a list of Filters from the API
+        /// </summary>
+        /// <param name="searchTerm"></param>
+        /// <param name="page"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        public List<ContactList> SearchContactLists(string searchTerm, int page, int pageSize)
+        {
+            RestRequest request = new RestRequest(Method.GET)
+            {
+                Resource = string.Format("/contact/lists?search={0}&page={1}&pageSize={2}", searchTerm, page, pageSize)
+            };
+
+            IRestResponse<RequestObjectList<ContactList>> response = _client.Get<RequestObjectList<ContactList>>(request);
+            List<ContactList> contactLists = response.Data.elements;
+
+            foreach (var item in contactLists)
+            {
+                Console.WriteLine("Name: " + item.name);
+                // do something...
+            }
+
+            return contactLists;
         }
         #endregion
 
