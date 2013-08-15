@@ -11,6 +11,7 @@ namespace EmailSample.Models
         public int? emailGroupId { get; set; }
         public int? emailHeaderId { get; set; }
         public int? encodingId { get; set; }
+        public int? folderId { get; set; }
         public RawHtmlContent htmlContent { get; set; }
         public int? id { get; set; }
         public bool isPlainTextEditable { get; set; }
