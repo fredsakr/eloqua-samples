@@ -5,21 +5,21 @@ using NUnit.Framework;
 namespace ContactSample.Tests
 {
     [TestFixture]
-    public class ContactHelperTests
+    public class ContactClientTests
     {
-        private ContactHelper _contactHelper;
+        private ContactClient _client;
 
         [TestFixtureSetUp]
         public void Init()
         {
-            _contactHelper = new ContactHelper("site", "user", "password",
+            _client = new ContactClient("site", "user", "password",
                                                            "https://secure.eloqua.com/API/REST/1.0/");
         }
 
         [Test]
         public void SearchContactsTest()
         {
-            List<Contact> contacts = _contactHelper.SearchContacts("*@eloqua.com", 1, 100);
+            List<Contact> contacts = _client.SearchContacts("*@eloqua.com", 1, 100);
             Assert.Greater(contacts.Count, 0);
         }
     }

@@ -4,7 +4,7 @@ using ContactSample.Models;
 
 namespace ContactSample
 {
-    public class ContactHelper
+    public class ContactClient
     {
         #region properties
 
@@ -14,7 +14,7 @@ namespace ContactSample
 
         #region constructors
 
-        public ContactHelper(string instance, string user, string password, string baseUrl)
+        public ContactClient(string instance, string user, string password, string baseUrl)
         {
             _client = new RestClient(baseUrl) { Authenticator = new HttpBasicAuthenticator(instance + "\\" + user, password) };
         }

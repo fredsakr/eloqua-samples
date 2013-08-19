@@ -11,14 +11,19 @@ namespace ContactSample.Models
         public string businessPhone { get; set; }
         public string city { get; set; }
         public string country { get; set; }
+        public int? createdAt { get; set; }
         public string emailAddress { get; set; }
+        public string fax { get; set; }
         public string firstName { get; set; }
         public int? id { get; set; }
         public string lastName { get; set; }
         public bool? isSubscribed { get; set; }
         public bool? isBounceBack { get; set; }
+        public string mobilePhone { get; set; }
+        public string postalCode { get; set; }
         public string salesPerson { get; set; }
         public string title { get; set; }
         public List<FieldValue> fieldValues { get; set; }
+        public int? updatedAt { get; set; }
     }
 }
