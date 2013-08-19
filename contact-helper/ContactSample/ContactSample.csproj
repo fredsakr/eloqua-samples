@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContactHelper.cs" />
+    <Compile Include="ContactClient.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\FieldValue.cs" />
     <Compile Include="Models\RequestObjectList.cs" />
